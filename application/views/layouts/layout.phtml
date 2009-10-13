@@ -1,0 +1,37 @@
+<?php echo $this->doctype(); ?> 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> 
+<head> 
+    <?php echo $this->headMeta(); ?> 
+    <?php echo $this->headTitle(); ?> 
+	<?php $this->headLink()->appendStylesheet(
+		$this->baseUrl() . '/css/blueprint/screen.css', 'screen'
+	); ?>
+	<?php $this->headLink()->appendStylesheet(
+		$this->baseUrl() . '/css/blueprint/print.css', 'print'
+	); ?>
+	<?php $this->headLink()->appendStylesheet(
+		$this->baseUrl() . '/css/blueprint/ie.css', 'screen', 'IE'
+	); ?>
+	<?php $this->headLink()->appendStylesheet(
+		$this->baseUrl() . '/css/blueprint/master.css', 'screen'
+	); ?>
+	<?php echo $this->headLink(); ?>
+</head> 
+<body> 
+    <div class="container">
+    	<div id="header" class="span-24 last">
+    		<h2><?php echo $this->title; ?></h2>
+    	</div>
+		<div id="content" class="span-17 colborder">
+			<?php echo $this->layout()->content; ?>
+		</div>
+		<div id="sidebar" class="span-6 last">
+			<p>Sidebar</p>
+		</div>
+		<div id="footer" class="span-24 last">
+			<p>Footer</p>
+		</div>
+    </div> 
+</div> 
+</body> 
+</html> 
