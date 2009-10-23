@@ -4,6 +4,7 @@
 			<th>ID</th>
 			<th>Username</th>
 			<th>Email</th>
+			<th>Activated</th>
 			<th>Actions</th>
 		</tr>
 		<?php foreach ($this->users as $user): ?>
@@ -17,6 +18,7 @@
 					)); ?>"><?php echo $user->username; ?></a>
 				</td>
 				<td><?php echo $user->email; ?></td>
+				<td><?php echo $user->activated; ?></td>
 				<td>
 					<a href="<?php echo $this->url(array(
 						'controller' => 'users',

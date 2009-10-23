@@ -27,6 +27,20 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		$view->headTitle('Quani'); 		
 		
 	}
+	
+	protected function _initEmail()
+	{
+		$email_config = array(
+			'auth' => 'plain',
+			'username' => 'factor11',
+			'password' => 'P3jRtmU85K',
+			'ssl' => 'tls',
+			'port' => 25
+		);
+		$transport = new Zend_Mail_Transport_Smtp('mail.factorprava.com',
+			$email_config);
+		Zend_Mail::setDefaultTransport($transport);
+	}
 
 }
 

@@ -46,13 +46,33 @@ class UsersController extends Zend_Controller_Action
 				$user = new Model_User();
 				$user->fill($form->getValues());
 				$user->created = date('Y-m-d H:i:s');
-				$user->password = sha1($user->password);				
-				$user->save();				
+				$user->password = sha1($user->password);
+				$user->code = uniqid();				
+				$user->save();		
+				$user->sendActivationEmail();		
 				$this->_helper->redirector('index');
 			}
 		}
 		
 		$this->view->form = $form;
+	}
+	
+	public function confirmAction()
+	{
+		$user_id = $this->_getParam('id');
+		$code = $this->_getParam('code');
+		$user = new Model_User($user_id);
+		if ($user->activated) {
+			$this->view->message = 'Ваш аккаунт уже активирован.';
+		} else {
+			if ($user->code === $code) {
+				$user->activated = true;
+				$user->save();
+				$this->view->message = 'Ваш аккаунт успешно активирован.';
+			} else {
+				$this->view->message = 'Неверные данные активации.';
+			}
+		}
 	}
 	
 	public function deleteAction()
