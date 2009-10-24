@@ -115,6 +115,31 @@ class UsersController extends Zend_Controller_Action
 		
 		$this->view->form = $form;
 	}
+	
+	public function loginAction()
+	{
+		$form = new Form_Login();
+		
+		if ($this->getRequest()->isPost()) {
+			if ($form->isValid($this->getRequest()->getPost())) {
+				$user = new Model_User();
+				if ($user->authorize($form->getValue('username'), $form->getValue('password'))) {
+					$this->_helper->redirector('login');
+				} else {
+					$this->view->error = 'Неверные данные авторизации.';
+				}
+			}
+		}
+		
+		$this->view->form = $form;
+	}
+	
+	public function logoutAction()
+	{
+		$auth = Zend_Auth::getInstance();
+		$auth->clearIdentity();
+		$this->_helper->redirector('login');
+	}
 }
 
 

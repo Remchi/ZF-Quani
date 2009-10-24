@@ -24,7 +24,13 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		$view->doctype('XHTML1_STRICT'); 
 		$view->headMeta()->appendHttpEquiv('Content-Type', 'text/html;charset=utf-8'); 
 		$view->headTitle()->setSeparator(' - '); 
-		$view->headTitle('Quani'); 		
+		$view->headTitle('Quani'); 
+		
+		if (!Zend_Auth::getInstance()->hasIdentity()) {
+			$view->identity = false;
+		} else {
+			$view->identity = Zend_Auth::getInstance()->getIdentity();
+		}		
 		
 	}
 	
@@ -40,7 +46,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		$transport = new Zend_Mail_Transport_Smtp('mail.factorprava.com',
 			$email_config);
 		Zend_Mail::setDefaultTransport($transport);
-	}
+	}	
 
 }
 
