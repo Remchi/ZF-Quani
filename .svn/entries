@@ -1,52 +1,0 @@
-8
-
-dir
-13
-file:///Users/remchi/svn/quani/trunk
-file:///Users/remchi/svn
-
-
-
-2009-10-04T06:19:49.748791Z
-13
-remchi
-
-
-svn:special svn:externals svn:needs-lock
-
-
-
-
-
-
-
-
-
-
-
-0b18d8e7-8575-4fb9-9f0d-40e4c4d7bb60
-
-tests
-dir
-
-application
-dir
-
-.zfproject.xml
-file
-
-
-
-
-2009-10-06T20:00:17.000000Z
-fd2fca37f6073eafa0c38a95e8e02ffa
-2009-09-29T03:11:50.491569Z
-2
-remchi
-
-library
-dir
-
-public
-dir
-

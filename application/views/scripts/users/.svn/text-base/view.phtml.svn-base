@@ -1,2 +1,0 @@
-<h2><?php echo $this->user->username; ?></h2>
-
