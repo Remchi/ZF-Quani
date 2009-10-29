@@ -26,6 +26,11 @@ class ErrorController extends Zend_Controller_Action
         $this->view->request   = $errors->request;
     }
 
+	public function deniedAction()
+	{
+		
+	}
+
 
 }
 

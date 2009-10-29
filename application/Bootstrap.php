@@ -15,11 +15,23 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		return $moduleLoader;
 	}
 	
+	protected function _initAcl()
+	{
+		
+	
+	}
+	
+	protected function _initPlugins()
+	{
+		$front = Zend_Controller_Front::getInstance();
+		$front->registerPlugin(new Plugin_Acl());
+	}
+
 	protected function _initViewHelpers() 
 	{ 
-		$this->bootstrap('layout'); 
-		$layout = $this->getResource('layout'); 
-		$view = $layout->getView(); 
+		$this->bootstrap('layout');
+		$layout = $this->getResource('layout');
+		$view = $layout->getView();
 
 		$view->doctype('XHTML1_STRICT'); 
 		$view->headMeta()->appendHttpEquiv('Content-Type', 'text/html;charset=utf-8'); 
@@ -31,7 +43,6 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		} else {
 			$view->identity = Zend_Auth::getInstance()->getIdentity();
 		}		
-		
 	}
 	
 	protected function _initEmail()
