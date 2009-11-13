@@ -49,12 +49,12 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 	{
 		$email_config = array(
 			'auth' => 'plain',
-			'username' => 'factor11',
-			'password' => 'P3jRtmU85K',
+			'username' => 'username',
+			'password' => 'password',
 			'ssl' => 'tls',
 			'port' => 25
 		);
-		$transport = new Zend_Mail_Transport_Smtp('mail.factorprava.com',
+		$transport = new Zend_Mail_Transport_Smtp('mail.domain.com',
 			$email_config);
 		Zend_Mail::setDefaultTransport($transport);
 	}	

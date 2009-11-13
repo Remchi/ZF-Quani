@@ -1,0 +1,26 @@
+<?php
+
+// описание вопроса и его автора
+
+// список комментариев
+
+// форму добавления нового комментария
+
+?>
+
+<h2><?php echo $this->question->title; ?> — <?php echo $this->author->username; ?></h2>
+<p><?php echo $this->question->description; ?></p>
+
+<?php if (count($this->answers) > 0): ?>
+	<?php foreach ($this->answers as $answer): ?>
+		<p><?php echo $answer->answer; ?></p>
+	<?php endforeach ?>
+<?php else: ?>
+	<p>Ответов на этот вопрос еще нет.</p>
+<?php endif ?>
+
+<?php if ($this->identity): ?>
+	<?php echo $this->form; ?>
+<?php else: ?>
+	<p>Для того, чтобы оставить ответ, вам необходимо зарегистрироваться.</p>	
+<?php endif ?>
