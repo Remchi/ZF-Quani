@@ -1,0 +1,17 @@
+<?php if (count($this->paginator)): ?>
+	<table>
+	<?php foreach ($this->paginator as $item): ?>
+		<tr>
+			<td><?php echo $item['username']; ?></td>
+			<td><?php echo $item['title']; ?></td>
+			<td><?php echo $item['answers_count']; ?></td>
+		</tr>
+	<?php endforeach ?>
+	</table>
+	
+	<?php echo $this->paginationControl($this->paginator, 'Sliding',
+				'partials/my_paginator.phtml'); ?>	
+	
+<?php else: ?>
+	<p>Вопросов нет.</p>
+<?php endif ?>

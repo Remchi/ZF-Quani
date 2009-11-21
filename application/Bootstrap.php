@@ -15,10 +15,10 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		return $moduleLoader;
 	}
 	
-	protected function _initAcl()
+	protected function _initRegistry()
 	{
-		
-	
+		$resource = $this->getPluginResource('db');
+		Zend_Registry::set('db', $resource->getDbAdapter());
 	}
 	
 	protected function _initPlugins()

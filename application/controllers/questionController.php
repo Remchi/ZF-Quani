@@ -3,7 +3,8 @@
 class QuestionController extends Zend_Controller_Action
 {
     public function addAction()
-    {
+    {	
+
         $form = new Form_Question();
 
 		if ($this->getRequest()->isPost()) {
@@ -17,7 +18,24 @@ class QuestionController extends Zend_Controller_Action
 		}
 
 		$this->view->form = $form;
-    }   
+    }  
+
+	public function indexAction()
+	{
+		$db = Zend_Registry::get('db');		
+		$select = $db->select()
+			->from(array('q' => 'questions'))
+			->join(array('u' => 'users'), 'u.id = q.author_id', 'username')
+			->joinLeft(array('a' => 'answers'), 'a.question_id = q.id', 
+			array('answers_count' => 'COUNT(a.id)'))
+			->group('q.id');
+		
+		$paginator = new Zend_Paginator(new Zend_Paginator_Adapter_DbSelect($select));
+		$paginator->setCurrentPageNumber($this->_getParam('page'));
+		$paginator->setItemCountPerPage(5);
+		$this->view->paginator = $paginator;
+		
+	}
 
 	public function viewAction()
 	{
